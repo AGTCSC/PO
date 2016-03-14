@@ -30,3 +30,27 @@ void heap()
       tl2--;
     }
 }
+
+public void quickSort(int ini, int fim)
+{			
+	int i = ini;
+	int j = fim;	
+	int aux=0;
+
+	while(i < j)
+	{		
+		while(i < j && vet[i] < vet[j])	i++;
+		aux = vet[i];
+		vet[i] = vet[j];
+		vet[j] = aux;		
+		while(i < j && vet[j] > vet[i])	j--;		
+			
+		aux = vet[i];
+		vet[i] = vet[j];
+		vet[j] = aux;		
+	}
+	if( (i-1) - ini > 1)
+		quickSort((ini, i-1);
+	if( fim - (j+1) > 1)
+		quickSort(j+1, fim);
+}
