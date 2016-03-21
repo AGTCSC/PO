@@ -54,3 +54,48 @@ public void quickSort(int ini, int fim)
 	if( fim - (j+1) > 1)
 		quickSort(j+1, fim);
 }
+//////////////////////////////////////////////////////////////////////////
+public void particao(int  [] vet1, int[] vet2)
+{
+	int meio = tl << 1;
+		for(int i=0; i<tl; i++)
+		{
+			vet1[i] = vet[i];
+			vet2[i+meio] = vet[meio+1];
+		}
+}
+public void fusao(int[] vet1, int[] vet2, int seq)
+{
+	int k = 0, i=0, j=0, t_seq = seq; 
+	while(k < tl)
+	{	
+		while(i<seq || j<seq)
+		{
+			if(vet1[i] < vet2[j])
+				vet[k++] = vet1[i++];
+			else
+				vet[k++] = vet2[j++];
+
+		}
+		while(i < seq)
+			vet[k++] = vet1[i++];
+		while(j < seq)
+			vet[k++] = vet2[j++];
+		seq = seq + t_seq;
+	}
+}
+public void margeSort()
+{
+	int seq = 0;
+	int meio = tl << 1;
+	int vet1[meio];
+	int vet2[meio];
+	
+	while(seq < tl)
+	{
+		particao(vet1, vet2);
+		fusao(vet1, vet2, seq);
+		seq *= 2;
+	}
+}
+//////////////////////////////////////////////////////
